@@ -65,7 +65,7 @@ h2{font-size:clamp(2rem,4.2vw,3.3rem);line-height:1.08}
 em.laranja{font-style:italic;color:var(--laranja)}
 .kicker{
   display:inline-flex;align-items:center;gap:12px;
-  font-size:.72rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;
+  font-size:.78rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;
   color:var(--laranja);margin-bottom:22px;
 }
 .kicker::before{content:"";width:34px;height:1px;background:var(--laranja)}
@@ -118,7 +118,7 @@ em.laranja{font-style:italic;color:var(--laranja)}
   transition:opacity .35s,transform .35s}
 .nav.fixa .marca{opacity:1;transform:none;pointer-events:auto}
 .marca-nome{font-family:var(--serif);font-size:1.05rem;line-height:1.15;color:var(--tinta-1);font-weight:500}
-.marca-nome small{display:block;font-family:var(--sans);font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--laranja);font-weight:600}
+.marca-nome small{display:block;font-family:var(--sans);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--laranja);font-weight:600}
 .nav-links{display:flex;gap:clamp(14px,2.4vw,32px);list-style:none}
 .nav-links a{
   text-decoration:none;font-size:.88rem;font-weight:500;color:var(--texto);
@@ -187,12 +187,12 @@ body.menu-aberto .hamburger span:nth-child(3){transform:translateY(-7px) rotate(
 .hc-titulo{display:block;font-family:var(--serif);font-weight:480;
   font-size:clamp(1.55rem,7vw,2.4rem);line-height:1.04;color:var(--tinta-2);
   overflow-wrap:break-word;hyphens:auto}
-.hc-sub{display:block;margin-top:14px;font-size:.7rem;font-weight:600;
+.hc-sub{display:block;margin-top:14px;font-size:.78rem;font-weight:600;
   letter-spacing:.16em;text-transform:uppercase;color:var(--texto-suave);line-height:1.5}
 
 .hero-info{margin-top:clamp(34px,5vh,56px)}
 .hero-eyebrow{
-  display:inline-flex;align-items:center;gap:12px;font-size:.75rem;font-weight:600;
+  display:inline-flex;align-items:center;gap:12px;font-size:.8rem;font-weight:600;
   letter-spacing:.2em;text-transform:uppercase;color:var(--tinta-2);margin-bottom:20px;
 }
 .hero-eyebrow::before{content:"";width:38px;height:1px;background:var(--laranja)}
@@ -215,11 +215,21 @@ body.menu-aberto .hamburger span:nth-child(3){transform:translateY(-7px) rotate(
 
 @media(max-width:760px){
   .hero-logo{display:none}
-  /* a hero full-bleed tirou o padding lateral ao contentor: aqui ele volta,
-     senao a figura encosta ao bordo e empurra a largura do documento.
-     O padding-top abre espaco para a nav, que e' fixa. */
-  .hero-compacto{display:flex;padding:clamp(84px,21vw,104px) clamp(18px,5vw,26px) 0}
-  .hero{padding-bottom:clamp(32px,6vh,52px)}
+  /* Mesma logica do desktop: a imagem vai de ponta a ponta e dissolve-se no
+     fundo. Contida numa caixa, o cinza da fotografia le-se como um retangulo
+     colado. O lettering da logo e' ilegivel a esta largura, por isso a figura
+     fica sozinha em cima e o titulo passa a texto real por baixo. */
+  .hero-compacto{display:block;padding:0}
+  .hero-compacto img{
+    width:100%;max-width:none;height:min(50vh,400px);
+    object-fit:cover;object-position:30% 38%;
+    -webkit-mask-image:linear-gradient(to bottom,#000 0,#000 62%,transparent 100%);
+            mask-image:linear-gradient(to bottom,#000 0,#000 62%,transparent 100%);
+  }
+  .hero-compacto > div{padding:4px clamp(20px,5.5vw,28px) 0}
+  .hc-titulo{font-size:clamp(2.4rem,11vw,3.4rem)}
+  .hc-sub{margin-top:16px;font-size:.78rem}
+  .hero{padding-bottom:clamp(28px,5vh,44px)}
 }
 
 /* ---------- faixa deslizante ---------- */
@@ -250,10 +260,13 @@ body.menu-aberto .hamburger span:nth-child(3){transform:translateY(-7px) rotate(
    01 · PROMESSA
 ============================================================ */
 .promessa-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(40px,6vw,90px);align-items:start}
-.citacao{position:relative;padding:clamp(28px,4vw,48px);background:var(--branco);border:1px solid var(--hair);border-radius:6px}
+.citacao{padding:clamp(26px,4vw,44px);background:var(--branco);border:1px solid var(--hair);border-radius:6px}
+/* As aspas vivem NO FLUXO, nao em posicao absoluta.
+   Em absoluto e com fundo opaco, tapavam o inicio das duas primeiras linhas
+   assim que o padding da caixa encolhia em ecra estreito. */
 .citacao::before{
-  content:"“";font-family:var(--serif);font-size:6rem;line-height:1;color:var(--laranja);
-  position:absolute;top:-14px;left:22px;background:var(--branco);padding:0 8px;
+  content:"“";display:block;font-family:var(--serif);font-size:4.6rem;
+  line-height:.72;color:var(--laranja);margin-bottom:6px;
 }
 .citacao p{font-family:var(--serif);font-style:italic;font-size:clamp(1.4rem,2.4vw,1.9rem);line-height:1.35;color:var(--tinta-1)}
 .citacao p strong{color:var(--laranja);font-weight:500}
@@ -275,7 +288,7 @@ body.menu-aberto .hamburger span:nth-child(3){transform:translateY(-7px) rotate(
 }
 .perfis{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
 .perfis span{
-  font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;
+  font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;
   color:var(--prata-alto);border:1px solid rgba(237,236,234,.3);border-radius:100px;padding:8px 16px;
 }
 .situacoes{border-top:1px solid rgba(237,236,234,.16)}
@@ -378,7 +391,7 @@ body.menu-aberto .hamburger span:nth-child(3){transform:translateY(-7px) rotate(
 .ticket-corpo{padding:clamp(28px,4vw,46px)}
 .ticket-tag{
   display:inline-flex;align-items:center;gap:8px;background:var(--tinta-1);color:var(--laranja-suave);
-  font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  font-size:.76rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
   padding:8px 16px;border-radius:100px;
 }
 .ticket h3{font-size:clamp(1.7rem,3vw,2.4rem);color:var(--tinta-3);margin-top:18px}
@@ -387,10 +400,10 @@ body.menu-aberto .hamburger span:nth-child(3){transform:translateY(-7px) rotate(
 .ticket-preco .antes{font-size:1.05rem;color:var(--texto-suave);text-decoration:line-through}
 .ticket-inclui{margin-top:22px;border-top:1px solid var(--hair);padding-top:20px}
 .ticket-inclui li{
-  list-style:none;display:flex;gap:10px;align-items:flex-start;
+  list-style:none;display:flex;gap:10px;align-items:flex-start;min-width:0;
   font-size:.93rem;color:var(--texto-suave);padding-block:5px;
 }
-.ticket-inclui .icone{width:15px;height:15px;color:var(--laranja);margin-top:5px}
+.ticket-inclui .icone{width:15px;height:15px;flex:none;color:var(--laranja);margin-top:5px}
 /* contador */
 .contador{display:flex;align-items:center;gap:8px;margin-top:24px;flex-wrap:wrap}
 .contador-celula{text-align:center}
@@ -399,7 +412,7 @@ body.menu-aberto .hamburger span:nth-child(3){transform:translateY(-7px) rotate(
   background:var(--prata-alto);border:1px solid var(--hair);border-radius:8px;
   min-width:58px;padding:8px 6px;font-variant-numeric:tabular-nums;display:block;
 }
-.contador-rotulo{display:block;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--texto-suave);margin-top:6px;font-weight:600}
+.contador-rotulo{display:block;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--texto-suave);margin-top:6px;font-weight:600}
 .contador-sep{font-family:var(--serif);color:var(--laranja);font-size:1.4rem;padding-bottom:20px}
 .contador-legenda{width:100%;font-size:.82rem;color:var(--texto-suave);margin-top:6px}
 .ticket .btn{margin-top:28px}
@@ -416,7 +429,7 @@ body.menu-aberto .hamburger span:nth-child(3){transform:translateY(-7px) rotate(
 .ticket-talao::before{top:-13px}
 .ticket-talao::after{bottom:-13px}
 .ticket-talao .vertical{
-  writing-mode:vertical-rl;font-size:.75rem;font-weight:700;letter-spacing:.4em;
+  writing-mode:vertical-rl;font-size:.8rem;font-weight:700;letter-spacing:.4em;
   text-transform:uppercase;color:var(--laranja);
 }
 .ticket-talao .glifo{width:18px;height:18px;color:var(--tinta-1);opacity:.6}
@@ -466,7 +479,7 @@ body.menu-aberto .hamburger span:nth-child(3){transform:translateY(-7px) rotate(
 .local-lista{border-top:1px solid rgba(20,22,29,.18)}
 .local-item{display:flex;gap:18px;padding-block:22px;border-bottom:1px solid rgba(20,22,29,.18)}
 .local-item .icone{color:var(--laranja);margin-top:4px;width:22px;height:22px}
-.local-item h3{font-family:var(--sans);font-size:.75rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--tinta-1)}
+.local-item h3{font-family:var(--sans);font-size:.8rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--tinta-1)}
 .local-item p{font-size:.95rem;color:var(--texto-suave);margin-top:4px}
 .local-item a{color:var(--tinta-1);font-weight:600;text-decoration:none;border-bottom:1px solid var(--laranja)}
 .mapa-card{
@@ -496,7 +509,7 @@ footer{background:var(--tinta-3);color:var(--prata-alto)}
   border-top:1px solid rgba(237,236,234,.14);
   padding-block:44px;display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:36px;
 }
-.rodape-cols h4{font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--laranja-suave);margin-bottom:18px}
+.rodape-cols h4{font-size:.78rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--laranja-suave);margin-bottom:18px}
 .rodape-cols ul{list-style:none;display:grid;gap:10px}
 .rodape-cols a{color:rgba(237,236,234,.75);text-decoration:none;font-size:.92rem;transition:color .3s;background:none;border:none;cursor:pointer;font-family:var(--sans);padding:0;text-align:left}
 .rodape-cols a:hover{color:var(--laranja-suave)}
@@ -513,7 +526,27 @@ footer{background:var(--tinta-3);color:var(--prata-alto)}
   font-size:.8rem;color:rgba(237,236,234,.5);
 }
 @media(max-width:880px){.rodape-cols{grid-template-columns:1fr 1fr}}
-@media(max-width:560px){.rodape-cols{grid-template-columns:1fr}}
+@media(max-width:560px){
+  .rodape-cols{grid-template-columns:1fr}
+  /* O bilhete e' um grid 1fr + talao de 92px. Abaixo desta largura a coluna
+     do conteudo fica mais estreita do que o contador consegue encolher
+     (4 celulas + separadores), e o cartao cortava o que la estava dentro.
+     O talao destacavel e' decorativo, por isso e' o primeiro a sair. */
+  .ticket{grid-template-columns:minmax(0,1fr)}
+  .ticket-talao{display:none}
+  /* o contador em flex nao desce abaixo de ~256px (4 celulas + separadores)
+     e o cartao cortava-o. Em grid de 4 colunas iguais ele acompanha a
+     largura disponivel, e os dois pontos deixam de ser precisos. */
+  .contador{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  .contador-sep{display:none}
+  .contador-num{min-width:0;width:100%;font-size:1.35rem;padding:7px 2px}
+  .contador-legenda{grid-column:1/-1}
+  /* a etiqueta do Early Bird tem tracking largo e nao quebrava */
+  .ticket-tag{white-space:normal;line-height:1.5;text-align:left}
+  /* alvos de toque: listas do rodape com area suficiente para o dedo */
+  .rodape-cols ul{gap:2px}
+  .rodape-cols a{display:inline-block;padding-block:9px}
+}
 
 /* ============================================================
    MODAIS
@@ -534,7 +567,7 @@ footer{background:var(--tinta-3);color:var(--prata-alto)}
   display:flex;align-items:center;justify-content:center;color:var(--tinta-1);transition:all .3s;
 }
 .modal-fechar:hover{background:var(--tinta-1);color:var(--prata-alto)}
-.modal-kicker{font-size:.7rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--laranja)}
+.modal-kicker{font-size:.78rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--laranja)}
 .modal-caixa h3{font-size:1.7rem;color:var(--tinta-3);margin-top:8px}
 .modal-bilhete{
   display:inline-flex;align-items:center;gap:8px;margin-top:14px;
@@ -548,7 +581,7 @@ footer{background:var(--tinta-3);color:var(--prata-alto)}
 .passo-conteudo{border:none;margin-top:26px}
 .passo-conteudo[hidden]{display:none}
 .campo{margin-bottom:18px}
-.campo label{display:block;font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--tinta-1);margin-bottom:8px}
+.campo label{display:block;font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--tinta-1);margin-bottom:8px}
 .campo input{
   width:100%;padding:14px 16px;border:1px solid var(--hair);border-radius:10px;
   background:var(--branco);font-family:var(--sans);font-size:1rem;color:var(--texto);
