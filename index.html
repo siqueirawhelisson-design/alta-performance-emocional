@@ -2,6 +2,8 @@
 <html lang="pt">
 <head>
 <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; object-src 'none'; frame-src 'none'; form-action 'none'; base-uri 'none'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Alta Performance Emocional · 24 outubro 2026 · Vila Nova de Gaia</title>
 <meta name="description" content="Das emoções às decisões que transformam. Um dia para mulheres que querem passar do que sentem ao que fazem. 24 de outubro de 2026, Mafamude, Vila Nova de Gaia.">
@@ -507,7 +509,7 @@ footer{background:var(--tinta-3);color:var(--prata-alto)}
 .rodape-frase{font-family:var(--serif);font-style:italic;font-size:clamp(1.5rem,3.4vw,2.4rem);color:var(--prata-alto);max-width:20ch}
 .rodape-cols{
   border-top:1px solid rgba(237,236,234,.14);
-  padding-block:44px;display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:36px;
+  padding-block:44px;display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:clamp(36px,6vw,88px);
 }
 .rodape-cols h4{font-size:.78rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--laranja-suave);margin-bottom:18px}
 .rodape-cols ul{list-style:none;display:grid;gap:10px}
@@ -642,6 +644,30 @@ footer{background:var(--tinta-3);color:var(--prata-alto)}
   .reveal{opacity:1;transform:none}
   html{scroll-behavior:auto}
 }
+
+/* ---------- 05 . momento de musica ---------- */
+.musica{background:var(--tinta-2);color:var(--prata-alto);position:relative;overflow:hidden}
+.musica::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(120% 90% at 82% 12%, rgba(226,84,42,.18), transparent 58%);pointer-events:none}
+.musica .container{position:relative}
+.musica-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(36px,5vw,84px);align-items:center}
+.musica .kicker{color:var(--laranja-suave)}
+.musica h2{color:var(--prata-alto);margin-top:10px}
+.musica h2 em{color:var(--laranja-claro);font-style:italic}
+.musica-lead{font-size:clamp(17px,1.45vw,20px);line-height:1.62;color:#D9D7D4;margin-top:22px;max-width:56ch}
+.musica-nome{font-family:var(--serif);font-size:clamp(26px,2.6vw,38px);line-height:1.1;color:var(--prata-alto)}
+.musica-papel{font-family:var(--sans);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--laranja-suave);margin-bottom:12px}
+.musica-bio{color:#BFBDBA;line-height:1.65;margin-top:18px;max-width:52ch}
+.musica-provas{list-style:none;margin:26px 0 0;padding:0;border-top:1px solid rgba(243,241,239,.14)}
+.musica-provas li{display:flex;gap:18px;align-items:baseline;padding:13px 0;border-bottom:1px solid rgba(243,241,239,.14)}
+.musica-provas .ano{font-family:var(--serif);font-size:20px;color:var(--laranja-claro);min-width:74px;font-variant-numeric:tabular-nums}
+.musica-provas .facto{color:#D9D7D4;line-height:1.5}
+.musica-nota{margin-top:26px;padding-left:18px;border-left:2px solid var(--laranja);color:#EDEBE8;font-family:var(--serif);font-style:italic;font-size:clamp(17px,1.5vw,21px);line-height:1.5}
+@media (max-width:900px){.musica-grid{grid-template-columns:1fr;gap:34px}}
+
+.ticket-disponivel{font-family:var(--sans);font-size:13.5px;line-height:1.5;color:var(--texto-suave);
+  margin-top:16px;padding-top:14px;border-top:1px solid var(--hair)}
+.ticket-disponivel strong{color:var(--texto);font-weight:600}
 </style>
 </head>
 <body>
@@ -727,7 +753,7 @@ footer{background:var(--tinta-3);color:var(--prata-alto)}
       <li><a href="#local">Local</a></li>
     </ul>
     <div class="nav-cta">
-      <button class="btn btn-tinta btn-mini js-inscricao" data-bilhete="early">Garanta a sua participação</button>
+      <a class="btn btn-tinta btn-mini" href="https://buy.stripe.com/bJe00jfocaDr7hV3te7EQ01" target="_blank" rel="noopener">Garanta a sua participação</a>
       <button class="hamburger" id="hamburger" aria-label="Abrir menu"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -739,7 +765,7 @@ footer{background:var(--tinta-3);color:var(--prata-alto)}
   <a href="#palestrantes">Palestrantes</a>
   <a href="#bilhetes">Bilhetes</a>
   <a href="#local">Local</a>
-  <button class="btn btn-solido js-inscricao" data-bilhete="early">Garanta a sua participação <svg class="icone"><use href="#i-seta"/></svg></button>
+  <a class="btn btn-solido" href="https://buy.stripe.com/bJe00jfocaDr7hV3te7EQ01" target="_blank" rel="noopener">Garanta a sua participação <svg class="icone"><use href="#i-seta"/></svg></a>
 </div>
 
 <!-- ==================== HERO ==================== -->
@@ -770,7 +796,7 @@ footer{background:var(--tinta-3);color:var(--prata-alto)}
       <div><svg class="icone"><use href="#i-pin"/></svg> Auditório do Centro Paroquial de Mafamude</div>
     </div>
     <div class="hero-acoes">
-      <button class="btn btn-solido js-inscricao" data-bilhete="early">Garanta a sua participação <svg class="icone"><use href="#i-seta"/></svg></button>
+      <a class="btn btn-solido" href="https://buy.stripe.com/bJe00jfocaDr7hV3te7EQ01" target="_blank" rel="noopener">Garanta a sua participação <svg class="icone"><use href="#i-seta"/></svg></a>
       <a class="btn btn-linha" href="#palestrantes">Conhecer os palestrantes <svg class="icone"><use href="#i-seta-baixo"/></svg></a>
     </div>
   </div>
@@ -1026,11 +1052,39 @@ footer{background:var(--tinta-3);color:var(--prata-alto)}
   </div>
 </section>
 
+
+<!-- ==================== 05 . MOMENTO DE MUSICA ==================== -->
+<section class="sec musica" id="musica">
+  <div class="container">
+    <div class="musica-grid">
+
+      <div class="reveal">
+        <p class="kicker">05 &middot; Um momento &agrave; parte</p>
+        <h2>Piano ao vivo,<br><em>no meio do dia.</em></h2>
+        <p class="musica-lead">H&aacute; coisas que nenhuma palestra consegue fazer. A m&uacute;sica ao vivo &eacute; uma delas. N&atilde;o vem para preencher um intervalo: vem para abrir aquilo que as palavras s&oacute; conseguem explicar.</p>
+        <p class="musica-nota">O que se ouve com os ouvidos entra pela cabe&ccedil;a. O que se ouve ao vivo entra pelo peito.</p>
+      </div>
+
+      <div class="reveal" style="transition-delay:.12s">
+        <p class="musica-papel">Convidado especial &middot; Piano</p>
+        <p class="musica-nome">Jos&eacute; Veloso Rito</p>
+        <p class="musica-bio">Pianista e compositor, com um percurso iniciado em <strong>1962</strong>. Dedica-se ao piano cl&aacute;ssico e contempor&acirc;neo, e interpreta sobretudo <strong>obras da sua autoria</strong>: sonatas, tocatas, baladas e prel&uacute;dios. Ao longo do percurso tem cruzado a m&uacute;sica com a poesia e com outras express&otilde;es art&iacute;sticas.</p>
+        <ul class="musica-provas">
+          <li><span class="ano">60 anos</span><span class="facto">de percurso dedicado ao piano, desde 1962</span></li>
+          <li><span class="ano">2024</span><span class="facto">Recital na Funda&ccedil;&atilde;o Eng. Ant&oacute;nio de Almeida, Porto</span></li>
+          <li><span class="ano">2002</span><span class="facto">Concerto nos Estados Unidos, em Boston</span></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ==================== 05 · BILHETES ==================== -->
 <section class="sec sec-creme" id="bilhetes">
   <div class="container">
     <div class="sec-cab reveal">
-      <p class="kicker">05 · Bilhetes</p>
+      <p class="kicker">06 · Bilhetes</p>
       <h2>Garanta o seu lugar <em class="laranja">nesta sala.</em></h2>
       <p class="lead" style="margin-top:20px">Lotação limitada a 150 lugares, dos quais 125 em venda pública. Quando esgotarem, abrimos lista de espera.</p>
     </div>
@@ -1063,7 +1117,7 @@ footer{background:var(--tinta-3);color:var(--prata-alto)}
             <div class="contador-celula"><span class="contador-num" id="c-seg">--</span><span class="contador-rotulo">seg</span></div>
             <span class="contador-legenda" id="contador-legenda">até ao fim do Early Bird</span>
           </div>
-          <button class="btn btn-tinta btn-bloco js-inscricao" data-bilhete="early">Garanta a sua participação · 25 €</button>
+          <a class="btn btn-tinta btn-bloco" href="https://buy.stripe.com/bJe00jfocaDr7hV3te7EQ01" target="_blank" rel="noopener">Garanta a sua participação · 25 €</a>
         </div>
         <div class="ticket-talao" aria-hidden="true">
           <svg class="glifo"><use href="#i-glifo"/></svg>
@@ -1078,13 +1132,13 @@ footer{background:var(--tinta-3);color:var(--prata-alto)}
           <h3>Bilhete individual</h3>
           <p class="preco">29 €</p>
           <p>Válido a partir de 1 de outubro, após o fecho do Early Bird. Mesmo programa, mesma experiência.</p>
-          <button class="btn btn-linha btn-mini js-inscricao" data-bilhete="normal">Reservar lugar</button>
+          <p class="ticket-disponivel">Ainda n&atilde;o est&aacute; &agrave; venda. Fica dispon&iacute;vel a <strong>1 de outubro</strong>, quando terminar o Early Bird. At&eacute; l&aacute;, o mesmo programa custa 25&nbsp;&euro;.</p>
         </div>
         <div class="outra">
           <h3>«Vem com uma amiga»</h3>
           <p class="preco">49 € <span style="font-size:.95rem;font-family:var(--sans);color:var(--texto-suave);font-weight:400">o par</span></p>
           <p>Dois lugares a preço de amizade, com poupança de 9 €. Porque a transformação compromete-se melhor a duas.</p>
-          <button class="btn btn-linha btn-mini js-inscricao" data-bilhete="duplo">Reservar dois lugares</button>
+          <a class="btn btn-linha btn-mini" href="https://buy.stripe.com/9B6fZh7VKcLzeKn4xi7EQ02" target="_blank" rel="noopener">Reservar dois lugares</a>
         </div>
       </div>
     </div>
@@ -1131,6 +1185,10 @@ footer{background:var(--tinta-3);color:var(--prata-alto)}
       <div class="faq-item">
         <button class="faq-pergunta" aria-expanded="false"><span>Recebo fatura do meu bilhete?</span><span class="faq-icone"><svg class="icone"><use href="#i-mais"/></svg></span></button>
         <div class="faq-resposta"><div class="faq-resposta-inner"><p>Sim. Após a confirmação da inscrição, recebe o documento comprovativo e a fatura eletrónica por email.</p></div></div>
+      <div class="faq-item">
+          <button class="faq-pergunta" aria-expanded="false"><span>H&aacute; m&uacute;sica ao vivo durante o dia?</span><span class="faq-icone"><svg class="icone"><use href="#i-mais"/></svg></span></button>
+          <div class="faq-resposta"><div class="faq-resposta-inner"><p>Sim. <strong>Jos&eacute; Veloso Rito</strong>, pianista e compositor com um percurso iniciado em 1962, interpreta ao piano <strong>obras da sua autoria</strong>. N&atilde;o &eacute; m&uacute;sica de fundo nem entretenimento entre palestras: &eacute; um momento pensado para o dia respirar, e para o que se ouviu deixar de ser ideia e passar a ser sensa&ccedil;&atilde;o. J&aacute; se apresentou na Funda&ccedil;&atilde;o Eng. Ant&oacute;nio de Almeida, no Porto, e nos Estados Unidos. Est&aacute; inclu&iacute;do no bilhete, sem custo adicional.</p></div></div>
+        </div>
       </div>
     </div>
   </div>
@@ -1188,7 +1246,7 @@ footer{background:var(--tinta-3);color:var(--prata-alto)}
   <div class="container">
     <div class="rodape-topo">
       <p class="rodape-frase">A emoção informa. A consciência escolhe. A ação transforma.</p>
-      <button class="btn btn-solido js-inscricao" data-bilhete="early">Garanta a sua participação <svg class="icone"><use href="#i-seta"/></svg></button>
+      <a class="btn btn-solido" href="https://buy.stripe.com/bJe00jfocaDr7hV3te7EQ01" target="_blank" rel="noopener">Garanta a sua participação <svg class="icone"><use href="#i-seta"/></svg></a>
     </div>
     <div class="rodape-cols">
       <div>
@@ -1209,14 +1267,7 @@ footer{background:var(--tinta-3);color:var(--prata-alto)}
         <h4>Contactos</h4>
         <ul>
           <li><a href="https://wa.me/351916273645?text=Ol%C3%A1%2C%20gostava%20de%20receber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20evento%20Alta%20Performance%20Emocional." target="_blank" rel="noopener">Falar connosco no WhatsApp</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Legal</h4>
-        <ul>
-          <li><button class="js-politica" data-politica="cancelamento">Política de cancelamento</button></li>
-          <li><button class="js-politica" data-politica="privacidade">Privacidade (RGPD)</button></li>
-          <li><button class="js-politica" data-politica="imagem">Utilização de imagem</button></li>
+        <li><a href="tel:+351916273645">+351&nbsp;916&nbsp;273&nbsp;645</a></li>
         </ul>
       </div>
     </div>
@@ -1226,108 +1277,6 @@ footer{background:var(--tinta-3);color:var(--prata-alto)}
     </div>
   </div>
 </footer>
-
-<!-- ==================== MODAL DE INSCRIÇÃO ==================== -->
-<div class="modal" id="modal-inscricao" aria-hidden="true">
-  <div class="modal-fundo" data-fechar></div>
-  <div class="modal-caixa" role="dialog" aria-modal="true" aria-labelledby="mi-titulo">
-    <button class="modal-fechar" data-fechar aria-label="Fechar"><svg class="icone"><use href="#i-fechar"/></svg></button>
-
-    <div id="mi-form-area">
-      <span class="modal-kicker">Inscrição</span>
-      <h3 id="mi-titulo">Garanta a sua participação</h3>
-      <div class="modal-bilhete" id="mi-bilhete">Early Bird · 25 €</div>
-      <div class="passos">
-        <span class="passo-barra ativa"></span><span class="passo-barra"></span><span class="passo-barra"></span>
-      </div>
-
-      <form id="form-inscricao" novalidate>
-        <!-- passo 1: dados -->
-        <fieldset class="passo-conteudo" data-passo="1">
-          <div class="campo" id="cp-nome">
-            <label for="f-nome">Nome completo</label>
-            <input type="text" id="f-nome" autocomplete="name" placeholder="O seu nome">
-            <span class="erro-msg">Escreva o seu nome completo.</span>
-          </div>
-          <div class="campo" id="cp-email">
-            <label for="f-email">Email</label>
-            <input type="email" id="f-email" autocomplete="email" placeholder="nome@exemplo.pt">
-            <span class="erro-msg">Indique um email válido. É para lá que enviamos a confirmação.</span>
-          </div>
-          <div class="campo" id="cp-tel">
-            <label for="f-tel">Telemóvel</label>
-            <input type="tel" id="f-tel" autocomplete="tel" placeholder="9XX XXX XXX" maxlength="9" inputmode="numeric">
-            <span class="erro-msg">Indique um número português de 9 dígitos.</span>
-          </div>
-        </fieldset>
-
-        <!-- passo 2: pagamento -->
-        <fieldset class="passo-conteudo" data-passo="2" hidden>
-          <div class="metodos" role="radiogroup" aria-label="Método de pagamento">
-            <label class="metodo">
-              <input type="radio" name="pagamento" value="Cartão bancário" checked>
-              <svg class="icone"><use href="#i-cartao"/></svg>
-              <span><strong>Cartão bancário</strong><small>Pagamento seguro no passo seguinte</small></span>
-            </label>
-            <label class="metodo">
-              <input type="radio" name="pagamento" value="MB WAY">
-              <svg class="icone"><use href="#i-telemovel"/></svg>
-              <span><strong>MB WAY</strong><small>Confirma no telemóvel em segundos</small></span>
-            </label>
-            <label class="metodo">
-              <input type="radio" name="pagamento" value="Referência Multibanco">
-              <svg class="icone"><use href="#i-multibanco"/></svg>
-              <span><strong>Multibanco</strong><small>Entidade e referência geradas na confirmação</small></span>
-            </label>
-            <label class="metodo">
-              <input type="radio" name="pagamento" value="Transferência bancária">
-              <svg class="icone"><use href="#i-transferencia"/></svg>
-              <span><strong>Transferência</strong><small>IBAN enviado por email</small></span>
-            </label>
-          </div>
-          <div class="campo" id="cp-mbway" style="display:none;margin-top:16px">
-            <label for="f-mbway">Número MB WAY</label>
-            <input type="tel" id="f-mbway" placeholder="9XX XXX XXX" maxlength="9" inputmode="numeric">
-            <span class="erro-msg">Indique o número de telemóvel associado ao MB WAY.</span>
-          </div>
-          <p class="metodo-extra">Após confirmar, recebe por email o link de pagamento seguro e a confirmação automática da inscrição, com o respetivo documento.</p>
-        </fieldset>
-
-        <!-- passo 3: revisão -->
-        <fieldset class="passo-conteudo" data-passo="3" hidden>
-          <div class="resumo">
-            <dl>
-              <dt>Participante</dt><dd id="r-nome"></dd>
-              <dt>Bilhete</dt><dd id="r-bilhete"></dd>
-              <dt>Pagamento</dt><dd id="r-pagamento"></dd>
-              <dt>Total a pagar</dt><dd id="r-total"></dd>
-            </dl>
-          </div>
-          <label class="consentimento" id="cp-consentimento">
-            <input type="checkbox" id="f-consentimento">
-            <span>Autorizo o tratamento dos meus dados para efeitos de organização do evento, nos termos da <button type="button" class="js-politica" data-politica="privacidade" style="background:none;border:none;color:var(--laranja);cursor:pointer;font:inherit;text-decoration:underline;padding:0">política de privacidade</button>.</span>
-          </label>
-          <span class="erro-msg" id="erro-consentimento" style="display:none">É necessário autorizar o tratamento dos dados para concluir a inscrição.</span>
-        </fieldset>
-
-        <div class="modal-acoes">
-          <button type="button" class="btn btn-linha btn-mini" id="mi-voltar" style="visibility:hidden">Voltar</button>
-          <button type="button" class="btn btn-tinta" id="mi-continuar">Continuar <svg class="icone"><use href="#i-seta"/></svg></button>
-        </div>
-      </form>
-    </div>
-
-    <!-- sucesso -->
-    <div class="modal-sucesso" id="mi-sucesso" hidden>
-      <div class="check-circulo"><svg class="icone" viewBox="0 0 24 24"><use href="#i-check"/></svg></div>
-      <h3 style="font-family:var(--serif);font-size:1.6rem;color:var(--tinta-3)">Lugar pré-reservado!</h3>
-      <span class="nr-reserva" id="nr-reserva">APE-2026-0000</span>
-      <p>Receberá no seu email o link seguro de pagamento e, logo após a confirmação, o documento da sua inscrição. O seu lugar fica guardado durante 48 horas.</p>
-      <p style="font-size:.85rem">Até já no dia 24 de outubro. Traga consigo mesma, do resto tratamos nós.</p>
-      <button class="btn btn-tinta btn-bloco" data-fechar style="margin-top:22px">Fechar</button>
-    </div>
-  </div>
-</div>
 
 <!-- ==================== MODAL DE POLÍTICAS ==================== -->
 <div class="modal" id="modal-politica" aria-hidden="true">
@@ -1454,109 +1403,6 @@ footer{background:var(--tinta-3);color:var(--prata-alto)}
     clearTimeout(toastTimer);
     toastTimer = setTimeout(()=>$("#toast").classList.remove("mostrar"), 5200);
   }
-
-  /* ---------- modal de inscrição ---------- */
-  const BILHETES = {
-    early : { nome:"Early Bird · individual", preco:"25 €", precoNum:25 },
-    normal: { nome:"Bilhete individual",      preco:"29 €", precoNum:29 },
-    duplo : { nome:"«Vem com uma amiga» (2 lugares)", preco:"49 €", precoNum:49 }
-  };
-  const modal = $("#modal-inscricao");
-  let bilheteAtual = "early", passo = 1;
-
-  function abrirModal(tipo){
-    bilheteAtual = BILHETES[tipo] ? tipo : "early";
-    $("#mi-bilhete").textContent = BILHETES[bilheteAtual].nome + " · " + BILHETES[bilheteAtual].preco;
-    irParaPasso(1);
-    $("#mi-form-area").hidden = false;
-    $("#mi-sucesso").hidden = true;
-    modal.classList.add("aberto");
-    modal.setAttribute("aria-hidden","false");
-    document.body.style.overflow = "hidden";
-    setTimeout(()=>$("#f-nome").focus(), 380);
-  }
-  function fecharModal(){
-    modal.classList.remove("aberto");
-    modal.setAttribute("aria-hidden","true");
-    document.body.style.overflow = "";
-  }
-  $$(".js-inscricao").forEach(b=>b.addEventListener("click", ()=>abrirModal(b.dataset.bilhete)));
-
-  function irParaPasso(n){
-    passo = n;
-    $$(".passo-conteudo").forEach(fc=>fc.hidden = (+fc.dataset.passo !== n));
-    $$(".passo-barra").forEach((b,i)=>b.classList.toggle("ativa", i < n));
-    $("#mi-voltar").style.visibility = n === 1 ? "hidden" : "visible";
-    const ult = n === 3;
-    $("#mi-continuar").innerHTML = ult
-      ? 'Confirmar reserva <svg class="icone"><use href="#i-check"/></svg>'
-      : 'Continuar <svg class="icone"><use href="#i-seta"/></svg>';
-    if(n === 3) preencherResumo();
-  }
-  $("#mi-voltar").addEventListener("click", ()=>irParaPasso(passo-1));
-
-  /* validação passo a passo */
-  function campoOk(id, teste){
-    const cp = $(id), input = cp.querySelector("input");
-    const ok = teste(input.value.trim());
-    cp.classList.toggle("erro", !ok);
-    return ok;
-  }
-  $("#mi-continuar").addEventListener("click", ()=>{
-    if(passo === 1){
-      const okNome  = campoOk("#cp-nome",  v=>v.length >= 3 && v.includes(" "));
-      const okEmail = campoOk("#cp-email", v=>/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v));
-      const okTel   = campoOk("#cp-tel",   v=>/^9\d{8}$/.test(v.replace(/\s/g,"")));
-      if(okNome && okEmail && okTel) irParaPasso(2);
-      else toast("Verifique os campos assinalados, por favor.");
-      return;
-    }
-    if(passo === 2){
-      const mb = document.querySelector('input[name="pagamento"]:checked').value === "MB WAY";
-      if(mb && !campoOk("#cp-mbway", v=>/^9\d{8}$/.test(v.replace(/\s/g,"")))){
-        toast("Indique o número de telemóvel do MB WAY."); return;
-      }
-      irParaPasso(3); return;
-    }
-    if(passo === 3){
-      if(!$("#f-consentimento").checked){
-        $("#erro-consentimento").style.display = "block";
-        toast("Falta autorizar o tratamento dos dados."); return;
-      }
-      $("#erro-consentimento").style.display = "none";
-      concluir();
-    }
-  });
-
-  function preencherResumo(){
-    $("#r-nome").textContent = $("#f-nome").value.trim();
-    $("#r-bilhete").textContent = BILHETES[bilheteAtual].nome;
-    $("#r-pagamento").textContent = document.querySelector('input[name="pagamento"]:checked').value;
-    $("#r-total").textContent = BILHETES[bilheteAtual].preco;
-  }
-
-  function concluir(){
-    /* Aqui entrará a integração com a plataforma de bilhética
-       (Stripe, Easypay, etc.): o fluxo simulado regista a reserva. */
-    const nr = "APE-2026-" + String(Math.floor(1000 + Math.random()*9000));
-    $("#nr-reserva").textContent = nr;
-    $("#mi-form-area").hidden = true;
-    $("#mi-sucesso").hidden = false;
-    toast("Reserva "+nr+" registada. Verifique o seu email.");
-  }
-
-  /* método MB WAY mostra/oculta campo */
-  $$('input[name="pagamento"]').forEach(r=>{
-    r.addEventListener("change", ()=>{
-      $$(".metodo").forEach(m=>m.classList.toggle("selecionado", m.querySelector("input").checked));
-      $("#cp-mbway").style.display = document.querySelector('input[name="pagamento"]:checked').value === "MB WAY" ? "block" : "none";
-    });
-  });
-
-  /* apenas dígitos nos campos numéricos */
-  ["#f-tel","#f-mbway"].forEach(id=>{
-    $(id).addEventListener("input", e=>{ e.target.value = e.target.value.replace(/\D/g,""); });
-  });
 
   /* ---------- modal de políticas ---------- */
   const POLITICAS = {
