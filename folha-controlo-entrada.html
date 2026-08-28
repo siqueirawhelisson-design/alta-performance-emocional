@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Folha de Controlo à Entrada</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ─────────────────────────────────────────────────────────────
+   FOLHA DE CONTROLO À ENTRADA
+   Companheira do bilhete: os numeros aqui sao os mesmos que saem
+   no canhoto. Usa-se com caneta, de pe, a porta. Por isso os
+   numeros sao grandes, as quadriculas sao grandes, e as linhas
+   alternam de tom para nao se perder a leitura a meio.
+   Peca de impressao: um so mundo visual, cores explicitas.
+   ───────────────────────────────────────────────────────────── */
+:root{
+  --prata-alto:#F3F1EF;
+  --prata:#E8E6E4;
+  --prata-2:#CFCBC6;
+  --prata-3:#A7A7A8;
+  --tinta-2:#14161D;
+  --tinta-azul:#3F3F53;
+  --laranja:#E2542A;
+  --texto-suave:#5C5E68;
+  --serif:"Fraunces",Georgia,"Times New Roman",serif;
+  --sans:"Outfit","Helvetica Neue",Arial,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{
+  margin:0;background:#26282F;color:#F3F1EF;
+  font-family:var(--sans);-webkit-font-smoothing:antialiased;
+}
+
+/* ── controlos, so no ecra ────────────────────────────────── */
+.barra{
+  position:sticky;top:0;z-index:5;
+  display:flex;flex-wrap:wrap;gap:18px;align-items:flex-end;
+  padding:18px clamp(16px,3vw,32px);
+  background:#1B1D23;border-bottom:1px solid rgba(243,241,239,.14);
+}
+.campo{display:flex;flex-direction:column;gap:5px}
+.campo label{
+  font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:#A7A7A8;font-weight:600;
+}
+.campo input{
+  width:110px;padding:7px 10px;border-radius:5px;
+  border:1px solid rgba(243,241,239,.24);
+  background:#26282F;color:#F3F1EF;
+  font-family:var(--sans);font-size:14px;font-variant-numeric:tabular-nums;
+}
+.campo input:focus-visible{outline:2px solid var(--laranja);outline-offset:2px}
+.acao{
+  padding:9px 18px;border-radius:5px;border:0;cursor:pointer;
+  background:var(--laranja);color:#fff;
+  font-family:var(--sans);font-size:14px;font-weight:600;
+}
+.acao:hover{background:#C9481F}
+.acao.sec{background:transparent;color:#F3F1EF;border:1px solid rgba(243,241,239,.3)}
+.acao.sec:hover{background:rgba(243,241,239,.08)}
+.acao:focus-visible{outline:2px solid #F3F1EF;outline-offset:2px}
+.dica{
+  margin-left:auto;max-width:44ch;
+  font-size:14px;line-height:1.5;color:#A7A7A8;
+}
+.dica b{color:#F3F1EF;font-weight:600}
+
+.palco{padding:clamp(20px,4vw,44px);display:flex;flex-direction:column;align-items:center;gap:10mm}
+
+/* ── folha ────────────────────────────────────────────────── */
+.folha{
+  width:210mm;height:297mm;flex:none;
+  padding:14mm 13mm 12mm;
+  background:var(--prata-alto);color:var(--tinta-2);
+  display:flex;flex-direction:column;
+  box-shadow:0 18px 50px rgba(0,0,0,.4);
+}
+
+.cabeca{
+  display:flex;justify-content:space-between;align-items:flex-end;gap:8mm;
+  padding-bottom:4mm;border-bottom:.5mm solid var(--tinta-2);
+}
+.f-marca{
+  margin:0;font-family:var(--serif);font-size:7mm;line-height:1.04;font-weight:400;
+}
+.f-sub{
+  margin:1.8mm 0 0;font-size:2.4mm;font-weight:600;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--tinta-azul);
+}
+.f-titulo{text-align:right;flex:none}
+.f-titulo strong{
+  display:block;font-size:3mm;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--laranja);
+}
+.f-titulo span{
+  display:block;margin-top:1.6mm;font-size:2.4mm;color:var(--texto-suave);
+  font-variant-numeric:tabular-nums;
+}
+
+/* grelha de numeros */
+.grelha{
+  flex:1;margin-top:5mm;
+  display:grid;grid-template-columns:repeat(10,1fr);
+  gap:0;align-content:start;
+  border-top:.25mm solid var(--prata-2);
+  border-left:.25mm solid var(--prata-2);
+}
+.celula{
+  display:flex;align-items:center;gap:1.6mm;
+  padding:2.1mm 1.4mm;
+  border-right:.25mm solid var(--prata-2);
+  border-bottom:.25mm solid var(--prata-2);
+}
+/* faixa alternada de cinco em cinco linhas, para nao perder a linha */
+.celula.faixa{background:var(--prata)}
+.quadricula{
+  width:4.2mm;height:4.2mm;flex:none;
+  border:.35mm solid var(--tinta-azul);border-radius:.6mm;
+  background:#fff;
+}
+.numero{
+  font-size:3.8mm;font-weight:600;line-height:1;
+  font-variant-numeric:tabular-nums;letter-spacing:.01em;
+}
+
+/* rodape */
+.rodape{
+  margin-top:5mm;padding-top:4mm;
+  border-top:.5mm solid var(--tinta-2);
+  display:flex;justify-content:space-between;gap:8mm;
+}
+.contagem{display:flex;gap:7mm}
+.contagem div{display:flex;flex-direction:column;gap:1.6mm}
+.contagem span{
+  font-size:2.4mm;font-weight:600;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--prata-3);
+}
+.contagem .caixa{
+  width:26mm;height:9mm;border:.35mm solid var(--tinta-azul);
+  border-radius:.8mm;background:#fff;
+}
+.nota{
+  max-width:78mm;font-size:2.4mm;line-height:1.5;color:var(--texto-suave);
+}
+.nota b{color:var(--tinta-2);font-weight:600}
+
+/* ── impressao ────────────────────────────────────────────── */
+@page{size:A4 portrait;margin:0}
+@media print{
+  body{background:#fff}
+  .barra{display:none}
+  .palco{padding:0;gap:0;display:block}
+  .folha{
+    box-shadow:none;margin:0;
+    page-break-after:always;break-after:page;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;
+  }
+  .folha:last-child{page-break-after:auto;break-after:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="barra">
+  <div class="campo">
+    <label for="inicio">Nº inicial</label>
+    <input id="inicio" type="number" min="1" max="9999" value="1">
+  </div>
+  <div class="campo">
+    <label for="quantos">Quantidade</label>
+    <input id="quantos" type="number" min="1" max="600" value="150">
+  </div>
+  <button class="acao" id="gerar" type="button">Gerar folha</button>
+  <button class="acao sec" id="imprimir" type="button">Imprimir / PDF</button>
+  <p class="dica">
+    Use os <b>mesmos números</b> que gerou nos bilhetes.
+    Ao imprimir, margens em <b>Nenhuma</b> e <b>Gráficos de fundo</b> ligados.
+  </p>
+</div>
+
+<div class="palco" id="palco"></div>
+
+<script>
+(function(){
+  "use strict";
+
+  var COLUNAS = 10;
+  var POR_FOLHA = 150;
+
+  var palco = document.getElementById("palco");
+  var campoInicio = document.getElementById("inicio");
+  var campoQuantos = document.getElementById("quantos");
+
+  function folha(numeros, indice, totalFolhas, primeiro, ultimo){
+    var el = document.createElement("section");
+    el.className = "folha";
+
+    var celulas = "";
+    for (var i = 0; i < numeros.length; i++){
+      // faixa a cada bloco de cinco linhas, para o olho nao saltar de linha
+      var linha = Math.floor(i / COLUNAS);
+      var faixa = (Math.floor(linha / 5) % 2 === 1) ? " faixa" : "";
+      celulas +=
+        '<div class="celula' + faixa + '">' +
+          '<span class="quadricula"></span>' +
+          '<span class="numero">' + numeros[i] + '</span>' +
+        '</div>';
+    }
+
+    el.innerHTML =
+      '<header class="cabeca">' +
+        '<div>' +
+          '<p class="f-marca">Alta Performance<br>Emocional</p>' +
+          '<p class="f-sub">Sábado, 24 de outubro de 2026 · Mafamude</p>' +
+        '</div>' +
+        '<div class="f-titulo">' +
+          '<strong>Controlo à entrada</strong>' +
+          '<span>Bilhetes ' + primeiro + ' a ' + ultimo + '</span>' +
+          '<span>Folha ' + indice + ' de ' + totalFolhas + '</span>' +
+        '</div>' +
+      '</header>' +
+      '<div class="grelha">' + celulas + '</div>' +
+      '<footer class="rodape">' +
+        '<div class="contagem">' +
+          '<div><span>Total entradas</span><span class="caixa"></span></div>' +
+          '<div><span>Responsável</span><span class="caixa"></span></div>' +
+          '<div><span>Hora de fecho</span><span class="caixa"></span></div>' +
+        '</div>' +
+        '<p class="nota">Risque o número à entrada e guarde o canhoto. ' +
+          'Se o número <b>já estiver riscado</b>, o bilhete é duplicado: ' +
+          'retenha-o e chame o responsável.</p>' +
+      '</footer>';
+    return el;
+  }
+
+  function gerar(){
+    var inicio = Math.max(1, parseInt(campoInicio.value, 10) || 1);
+    var quantos = Math.min(600, Math.max(1, parseInt(campoQuantos.value, 10) || 1));
+    var totalFolhas = Math.ceil(quantos / POR_FOLHA);
+
+    palco.textContent = "";
+
+    for (var f = 0; f < totalFolhas; f++){
+      var numeros = [];
+      var desde = inicio + f * POR_FOLHA;
+      var quantosAqui = Math.min(POR_FOLHA, quantos - f * POR_FOLHA);
+      for (var i = 0; i < quantosAqui; i++){
+        numeros.push(String(desde + i).padStart(3, "0"));
+      }
+      palco.appendChild(
+        folha(numeros, f + 1, totalFolhas, numeros[0], numeros[numeros.length - 1])
+      );
+    }
+  }
+
+  document.getElementById("gerar").addEventListener("click", gerar);
+  document.getElementById("imprimir").addEventListener("click", function(){ window.print(); });
+  campoInicio.addEventListener("change", gerar);
+  campoQuantos.addEventListener("change", gerar);
+
+  gerar();
+})();
+</script>
+
+</body>
+</html>
