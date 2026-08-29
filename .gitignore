@@ -1,0 +1,31 @@
+# Cópias de trabalho e versões antigas. Nunca devem ir para o repositório
+# público: são ficheiros de rascunho e engordam o histórico sem servir o site.
+*.bak
+*.bak.html
+index-*.html.bak
+
+# Imagens que já não são usadas pelo site
+assets/hero.jpg
+assets/hero-mobile.jpg
+assets/logo-completo.jpg
+assets/logo-luz.webp
+assets/figura-luz.webp
+assets/veu-terra.webp
+
+# Ferramentas locais
+.impeccable/
+build/
+
+# Nunca versionar credenciais nem configuração de ambiente
+.env
+.env.*
+*.pem
+*.key
+*.p12
+credentials*
+secrets*
+
+# Lixo do sistema
+Thumbs.db
+desktop.ini
+.DS_Store
